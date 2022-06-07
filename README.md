@@ -25,4 +25,4 @@ A simple Ansible playbook to deploy a nginx server either to a RedHat system or 
 
 ## How To Use
 
-Change the 'playbook.yml' as you wish and on a push event it automatically gets tested.
+Change the "playbook.yml" as you wish and on a push event it automatically gets tested.
