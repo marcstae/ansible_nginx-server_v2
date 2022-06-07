@@ -1,3 +1,5 @@
+![Ansible nginx Pipeline](https://github.com/marcstae/ansible_nginx-server_v2/actions/workflows/blank.yml/badge.svg)
+
 # Ansible automated web server
 
 This is a learning project I undertook in my time at the Linux team as a part of my apprenticeship @Aveniq.
