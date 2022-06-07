@@ -11,8 +11,9 @@ on:
   push:
     branches:
       - 'main'
+    # Triggers the workflow on push event but only for the *.yml files
     paths:
-      - 'marcstae/playbooks/ansible-automated-nginx_server/**'
+      - '*.yml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +32,7 @@ jobs:
 
       # Start Ansible Playbook
       - name: Start Ansible Playbook
-        run: ansible-playbook -i inventory marcstae/playbooks/ansible-automated-nginx_server/playbook.yml -K
+        run: ansible-playbook -i inventory playbook.yml -K
 
       - name: Curl Website to see if it's running
         run: curl localhost:8080
