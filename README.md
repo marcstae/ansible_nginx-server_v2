@@ -1,41 +1,24 @@
-# lernende
-Repo for playbooks, roles ... from our apprentices. Hier drin befinden sich alle entwickelten Projekte unserer Lernenden, welche sie während der Zeit bei uns realisieren
+# Ansible automated web server
 
-Anforderungen
-------------
+This is a learning project I undertook in my time at the Linux team as a part of my apprenticeship @Aveniq.
 
-Die einzige Vorgabe ist, innerhalb dieses Repos sollen die Ressourcen nach den Lernenden aufgeteilt sein:<br>
-Bsp:<br>
-lernende<br>
-|_lernender 1<br>
-|_lernender 2<br>
+## Key Features
 
-Berechtigung
-------------
+A simple Ansible playbook to deploy a nginx server either to a RedHat system or an Ubuntu system.
 
-Das ganze Team IIPX zusätzlich der lernenden haben adminstrativen Zugriff auf dieses Repo. Aveniq Mitarbeitende sehen dieses Repo nicht. 
+* Automatically installs all required packages
+* Chooses automatically between RedHat or Ubuntu
+  * RedHat: CentOS, Fedora, RHEL, etc.
+* Automatically creates a HTML website with jinja2 templating
+  * Allows for dynamic content
 
-Lizenz
--------
+## How To Use
 
-BSD
+Clone this project onto your local machine that has Ansible installed.
 
-Kontakt Informationen
-------------------
+Edit the inventory file and run the playbook.
 
-Bei Fragen sich an das Team IIPX und die zwei Lehrlingsverantworlichen melden:
-
-Aldin Zecirevic<br>
-Linux System Engineer<br>
-aldin.zecirevic@aveniq.ch<br>
-+41 58 411 76 42<br>
-
-Thajakan Thirunavukkarasu<br>
-Linux System Engineer<br>
-thajakan.thirunavukkarasu@aveniq.ch<br>
-+41 58 411 75 65<br>
-
-Literatur
-------------------
-Um besser zu verstehen, wie man erfolgreich und strukturiert mit Git arbeiten kann, empfiehlt es sich folgenden Artikel durchzulesen:
-https://nvie.com/posts/a-successful-git-branching-model/
+```bash
+# Run the playbook
+$ ansible-playbook playbook.yml -i inventory -k -K
+```
