@@ -72,7 +72,7 @@
 
     - name: Copy a file
       template:
-        src: files/index.html.j2
+        src: /files/index.html.j2
         dest: docker/index.html
 
     - name: Create an nginx container
