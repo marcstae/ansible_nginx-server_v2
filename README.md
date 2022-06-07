@@ -2,7 +2,7 @@
 
 This is a learning project I undertook in my time at the Linux team as a part of my apprenticeship @Aveniq.
 
-## :red_circle: important :red_circle
+## :paperclip: important
 
 This project is the advanced version of the "ansible_nginx-server_v1" Repo, and thus adds the following features:
 
