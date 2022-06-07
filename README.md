@@ -11,7 +11,7 @@ This project is the advanced version of the "ansible_nginx-server_v1" Repo, and 
   * Checks with curl to see if the web server is up and running
   * If the web server is up and running, nothing happens
     * If the web server is down, GitHub automatically sends an email to the maintainer of this Repo
-* At the moment it only supports Ubuntu
+* At the moment only supports Ubuntu
 
 ## Key Features
 
