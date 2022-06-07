@@ -75,7 +75,7 @@
         src: files/index.html.j2
         dest: docker/index.html
 
-    - name: Create a nginx container
+    - name: Create an nginx container
       ansible.builtin.shell: docker run -it --rm -d -p 8080:80 -v docker:/usr/share/nginx/html --name web nginx
       args:
         executable: /bin/bash
