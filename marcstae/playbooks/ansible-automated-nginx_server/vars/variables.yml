@@ -1,0 +1,6 @@
+---
+app_user: "marcstae"
+http_conf: "your_domain.conf"
+http_port: "80"
+disable_default: true
+html_text: "This is a test"

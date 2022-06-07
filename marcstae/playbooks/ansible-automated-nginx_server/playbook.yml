@@ -1,0 +1,81 @@
+---
+- hosts: localhost
+  vars: 
+    ansible_python_interpreter: /usr/bin/python3
+  become: true
+  vars_files:
+    - "variables.yml"
+
+  tasks:
+    - name: Add an apt key by id from a keyserver
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Add Docker repository into sources list
+      ansible.builtin.apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+        update_cache: no
+      when: ansible_os_family == "Debian"
+
+    - name: Add Docker repository RedHat
+      yum_repository:
+        name: Docker-repository
+        description: adding a repository
+        baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+        gpgcheck: no
+      when: ansible_os_family == "RedHat"
+
+    - name: Install a list of packages
+      ansible.builtin.apt:
+        pkg:
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Docker packages
+      yum:
+        name:
+          - docker-ce 
+          - docker-ce-cli 
+          - containerd.io
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Enable the Docker daemon in systemd
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+          
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
+
+    - name: Add the user 'marc' to the group "docker"
+      ansible.builtin.user:
+        name: marc
+        group: docker
+        append: yes
+     
+    - name: create file directory
+      ansible.builtin.file:
+        path: docker
+        state: directory
+        mode: '0755'
+
+    - name: Copy a file
+      template:
+        src: files/index.html.j2
+        dest: docker/index.html
+
+    - name: Create a nginx container
+      ansible.builtin.shell: docker run -it --rm -d -p 8080:80 -v docker:/usr/share/nginx/html --name web nginx
+      args:
+        executable: /bin/bash
