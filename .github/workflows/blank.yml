@@ -32,7 +32,7 @@ jobs:
 
       # Start Ansible Playbook
       - name: Start Ansible Playbook
-        run: ansible-playbook -i inventory playbook.yml # -K
+        run: ansible-playbook -i inventory playbook.yml -K
 
       - name: Curl Website to see if it's running
         run: curl localhost:8080
